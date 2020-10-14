@@ -1,11 +1,13 @@
 module.exports = function countCats(matrix) {
-  return matrix
-    .map((innerArray) =>
-      innerArray.reduce(
-        (accumulator, currentValue) =>
-          accumulator + (currentValue === "^^" ? 1 : 0),
-        0
-      )
-    )
-    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  const array = matrix.flat();
+  let total = 0;
+  if (array.length === 0) {
+    return total;
+  }
+  array.forEach((element) => {
+    if (element === "^^") {
+      total = total + 1;
+    }
+  });
+  return total;
 };
